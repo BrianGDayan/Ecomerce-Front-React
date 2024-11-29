@@ -1,6 +1,6 @@
 import '../styles/Product.css'
 
-export const Product = () => {
+export const Product = ({ product }) => {
   return (
     <div className="product-card">
       <img

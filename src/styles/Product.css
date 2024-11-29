@@ -1,0 +1,23 @@
+.product-card {
+    padding: 10px;
+    border: 1px var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px var(--primary-color);
+  }
+  
+  .product-card-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .product-card-body {
+    color: #555;
+  }
+
+  .product-image {
+    width: auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  

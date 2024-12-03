@@ -51,3 +51,11 @@ text-decoration-color: var(--primary-color);
   font-size: 14px;
   margin-top: 10px;
 }
+
+.container-slider {
+  margin: 20px 0;
+}
+
+.MuiSlider-root {
+  color: #3f51b5; /* Cambia el color del slider */
+}

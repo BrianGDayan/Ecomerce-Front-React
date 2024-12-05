@@ -8,12 +8,16 @@ import { LoginScreen } from './routes/LoginScreen'
 import { RegisterScreen } from './routes/RegisterScreen'
 import { CarritoScreen } from './routes/CarritoScreen'
 import { PrivateRoute } from './components/PrivateRoute'; // par amostrar las rutas protegidas
+import { CarritoProvider } from "./context/CarritoProvider"
+import { ProductosProvider } from "./context/ProductosProvider"
 import './App.css'
 
 
 export const App = () => {
   return (
     <AuthProvider>
+        <ProductosProvider>
+        <CarritoProvider>
         <Header />
           <Routes>
             {/* Rutas públicas */}
@@ -30,6 +34,8 @@ export const App = () => {
               <Route path="*" element={<LoginScreen />} />
           </Routes>
           <Footer />
+        </CarritoProvider>
+        </ProductosProvider>
     </ AuthProvider>
   )
 }

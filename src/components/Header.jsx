@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom"
 import { useAuth } from "./AuthContext";
 import { BsCart4 } from "react-icons/bs";
+import { useContext } from "react";
+import { CarritoContext } from "../context/CarritoContext";
 import '../styles/Header.css'
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
@@ -10,6 +12,8 @@ import img2 from '../assets/img/running-man.png'
 export const Header = () => {
 
   const { isAuthenticated, logout } = useAuth(); // Acceder al estado de autenticación
+
+  const { listaCompras } = useContext(CarritoContext);
 
   return (
     <>
@@ -49,8 +53,8 @@ export const Header = () => {
                 )
                 }
               <li className="nav-item">
-                <NavLink to="/carrito" className="nav-link icon">
-                  <BsCart4 />
+                <NavLink to="/carrito" className="nav-link icon cart-icon-wrapper">
+                  <BsCart4 size={24}/>
                 </NavLink>
               </li>
             </ul>

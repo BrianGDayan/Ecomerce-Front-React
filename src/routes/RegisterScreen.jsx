@@ -6,6 +6,8 @@ import { useState } from 'react'
 
   // datos para registrarse
   export const RegisterScreen = () => {
+    const url = 'http://localhost:3001/auth/register';
+
     const [formData, setFormData] = useState({
       nombre: '',
       apellido: '',
@@ -27,7 +29,7 @@ import { useState } from 'react'
       e.preventDefault();
       
       try {
-        const response = await fetch('/usuarios', {
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

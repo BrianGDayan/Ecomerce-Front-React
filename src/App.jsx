@@ -10,6 +10,8 @@ import { CarritoScreen } from './routes/CarritoScreen'
 import { PrivateRoute } from './components/PrivateRoute'; // par amostrar las rutas protegidas
 import { CarritoProvider } from "./context/CarritoProvider"
 import { ProductosProvider } from "./context/ProductosProvider"
+import AdminScreen  from "./routes/AdminScreen";
+
 import './App.css'
 
 
@@ -29,7 +31,7 @@ export const App = () => {
               <Route path='/' element={ <PrivateRoute><HomeScreen></HomeScreen></PrivateRoute>}></Route>
               <Route path='/productos' element={ <PrivateRoute><ProductScreen></ProductScreen></PrivateRoute> }></Route>
               <Route path='/carrito' element={ <PrivateRoute><CarritoScreen></CarritoScreen></PrivateRoute> }></Route>
-
+              <Route path="/admin" element={ <PrivateRoute> <AdminScreen></AdminScreen> </PrivateRoute> }></Route>
               {/* Redirige a la página de login si no se encuentra la ruta */}
               <Route path="*" element={<LoginScreen />} />
           </Routes>

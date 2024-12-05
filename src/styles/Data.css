@@ -1,0 +1,73 @@
+.page { 
+    height: 90vh;
+    width: 100%;
+}
+
+.loginSign {
+    width: 40vw;
+}
+
+.dataSection {
+    width: 40vw;
+    height: fit-content;
+}
+
+.pageLogo {
+    filter: invert(100%);
+    max-height: 40px !important;
+}
+
+.dataSection div {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dataButton {
+    display: block;
+    width: 100%;
+    background-color: rgb(130, 189, 212);
+    color: #fff;
+}
+
+@media screen  and (max-width: 1024px) {
+    .loginSign {
+        width: 50vh;
+    }
+
+    .dataSection {
+        width: 50vh;
+    }
+}
+
+@media screen  and (max-width: 756px) {
+    .loginSign {
+        width: 40vh;
+    }
+
+    .dataSection {
+        width: 40vh;
+    }
+}
+
+/*
+    <div  className="page">
+      <p className="loginSign">Log In</p>
+      <div className="dataSection">
+        <img src="" className="pageLogo" />
+        <div>
+          <label>User</label>
+          <input type="email" />
+          
+          <label>Password</label>
+          <input type="password" />
+
+          <label>Forgot password? <a>Click here</a></label>
+          <button type="submit">Enviar</button>
+        </div>
+      </div>
+    </div>
+*/

@@ -1,9 +1,10 @@
 import '../styles/Footer.css'
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 export const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-container">
+    <footer className="footer bg-primary text-light text-center">
+      <div className="footer-container d-flex flex-wrap justify-content-space-between align-items-flex-start">
         <div className="footer-about">
           <h4>About Us</h4>
           <p>

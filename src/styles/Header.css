@@ -1,4 +1,24 @@
-.header {
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  background-color: #ececec;
+}
+
+.header-img {
+  filter: invert(100%);
+  max-height: 50px !important;
+  min-width: 40px;
+}
+
+.contenedor{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/*.header {
     background-color: var(--primary-color);
     color: white;
     padding: 15px 20px;

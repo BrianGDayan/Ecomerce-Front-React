@@ -23,7 +23,7 @@ export const App = () => {
         <Header />
           <Routes>
             {/* Rutas públicas */}
-              <Route path='/*' element={ <Navigate to='/' ></Navigate>}></Route>
+              <Route path='/*' element={ <Navigate to='/login' ></Navigate>}></Route>
               <Route path='/login' element={ <LoginScreen></LoginScreen> }></Route>
               <Route path='/registro' element={ <RegisterScreen></RegisterScreen> }></Route>
               

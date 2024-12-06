@@ -31,7 +31,7 @@ export const ProductosProvider = ({ children }) => {
   // Función para cargar los productos desde la base de datos
   const fetchProductos = async () => {
       try {
-          const response = await fetch('http://localhost:3001/productos');
+          const response = await fetch('https://database-fk.alwaysdata.net/productos');
           const data = await response.json();
           setProductos(data);
       } catch (error) {
@@ -46,7 +46,7 @@ export const ProductosProvider = ({ children }) => {
   // Función para agregar un nuevo producto a la base de datos
   const agregarProducto = async (nuevoProducto) => {
       try {
-          const response = await fetch('http://localhost:3001/productos/create', {
+          const response = await fetch('https://database-fk.alwaysdata.net/productos/create', {
               ...obtenerHeaders('POST'),
               body: JSON.stringify(nuevoProducto),
           });
@@ -72,7 +72,7 @@ export const ProductosProvider = ({ children }) => {
     }
   
     try {
-      const response = await fetch(`http://localhost:3001/productos/update/${productoEditado.id}`, {
+      const response = await fetch(`https://database-fk.alwaysdata.net/productos/update/${productoEditado.id}`, {
         ...obtenerHeaders('PUT'),
         body: JSON.stringify(productoEditado),
       });
@@ -102,7 +102,7 @@ export const ProductosProvider = ({ children }) => {
   // Función para eliminar un producto de la base de datos
   const eliminarProducto = async (idProducto) => {
       try {
-          const response = await fetch(`http://localhost:3001/productos/delete/${idProducto}`, {
+          const response = await fetch(`https://database-fk.alwaysdata.net/producos/delete/${idProducto}`, {
               ...obtenerHeaders('DELETE'),
           });
           const data = await response.json();

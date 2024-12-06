@@ -5,7 +5,7 @@ import '../styles/Data.css';
 import img1 from '../assets/img/logo.png';
 
 export const LoginScreen = () => {
-  const url = 'http://localhost:3001/auth/login';
+  const url = 'https://database-fk.alwaysdata.net/auth/login';
   const { login } = useAuth(); // Accedemos al contexto de autenticación
   const navigate = useNavigate(); // Inicializamos el hook useNavigate
 
@@ -35,7 +35,7 @@ export const LoginScreen = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        login(data.token, data.tipo_usuario); // Pasamos el tipo de usuario al login
+        login(data.token, data.tipo_usuario);
         if (data.tipo_usuario === 'admin') {
           navigate('/admin');
         } else {

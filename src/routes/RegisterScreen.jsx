@@ -4,7 +4,7 @@ import '../styles/Data.css';
 import img1 from '../assets/img/logo.png';
 // Datos para registrarse
 export const RegisterScreen = () => {
-  const url = 'http://localhost:3001/auth/register'; // Cambiar a la URL correcta
+  const url = 'https://database-fk.alwaysdata.net/auth/register'; // Cambiar a la URL correcta
   const navigate = useNavigate(); // Inicializamos el hook useNavigate
   const [formData, setFormData] = useState({
     nombre: '',

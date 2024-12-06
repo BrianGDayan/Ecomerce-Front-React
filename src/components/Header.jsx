@@ -37,13 +37,6 @@ export const Header = () => {
 
           <div className="collapse navbar-collapse justify-content-evenly" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink to='/' className="nav-link">Home</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to='/productos' className="nav-link">Products</NavLink>
-              </li>
-
               {/* Mostrar opciones solo si el usuario no está logueado */}
 
               {!isAuthenticated ? (
@@ -58,7 +51,7 @@ export const Header = () => {
               ) : (
                 <>
                   {/* Opciones visibles solo para administradores */}
-                  {tipo_usuario === 'admin' ? (
+                  {isUser.tipo_usuario === 'admin' ? (
                     <li className="nav-item">
                       <NavLink to='/admin' className="nav-link">Admin</NavLink>
                     </li>
@@ -82,13 +75,6 @@ export const Header = () => {
                   </li>
                 </>
               )}
-
-      
-              <li className="nav-item">
-                <NavLink to="/carrito" className="nav-link icon cart-icon-wrapper">
-                  <BsCart4 size={24} />
-                </NavLink>
-              </li>
             </ul>
           </div>
         </div>

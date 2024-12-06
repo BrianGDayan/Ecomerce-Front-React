@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
         id: payload.id,
         displayName: payload.nombre,
         email: payload.correo_electronico,
+        tipo_usuario: payload.tipo_usuario
       });
     }
   }, []);
@@ -29,8 +30,8 @@ export const AuthProvider = ({ children }) => {
       id: payload.id,
       displayName: payload.nombre,
       email: payload.correo_electronico,
+      tipo_usuario: payload.tipo_usuario
     });
-    sessionStorage.setItem('token', token);
   };
 
   const logout = () => {

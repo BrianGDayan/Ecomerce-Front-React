@@ -10,7 +10,7 @@ import { CarritoScreen } from './routes/CarritoScreen'
 import { PrivateRoute } from './components/PrivateRoute'; // par amostrar las rutas protegidas
 import { CarritoProvider } from "./context/CarritoProvider"
 import { ProductosProvider } from "./context/ProductosProvider"
-import AdminScreen  from "./routes/AdminScreen";
+import { AdminScreen }  from "./routes/AdminScreen";
 
 import './App.css'
 

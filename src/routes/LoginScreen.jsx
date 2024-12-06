@@ -35,12 +35,10 @@ export const LoginScreen = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        login(data.token);
-        if(data.tipo_usuario === 'admin'){
-          alert('Usuario logeado con éxito');
+        login(data.token, data.tipo_usuario); // Pasamos el tipo de usuario al login
+        if (data.tipo_usuario === 'admin') {
           navigate('/admin');
-        }else{
-          alert('Usuario logeado con éxito');
+        } else {
           navigate('/');
         }
       } else {

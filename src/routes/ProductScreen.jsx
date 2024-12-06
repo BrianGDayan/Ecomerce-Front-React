@@ -73,7 +73,9 @@ export const ProductScreen = () => {
             />
           ))
         ) : (
-          <p>No se encontraron productos.</p>
+          <div className="no-products">
+            <p>No se encontraron productos.</p>
+          </div>
         )}
       </div>
     </div>

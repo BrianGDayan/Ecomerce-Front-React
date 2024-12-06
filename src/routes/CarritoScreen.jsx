@@ -24,7 +24,7 @@ export const CarritoScreen = () => {
       {listaCompras.length === 0 ? (
         <p>Tu carrito está vacío.</p>
       ) : (
-        <div>
+        <div className="d-flex flex-column gap-3">
           {listaCompras.map((producto) => (
             <div key={producto.id} className="carrito-item">
               <img src={producto.imagen_url} alt={producto.nombre} className="producto-img" />
@@ -33,7 +33,9 @@ export const CarritoScreen = () => {
                 <p>{producto.descripcion}</p>
                 <p>Precio: ${producto.precio}</p>
                 <div className="cantidad-controls">
-                  <button onClick={() => disminuirCantidad(producto.id)}>-</button>
+                  {producto.cantidad > 1 ? (
+                    <button onClick={() => disminuirCantidad(producto.id)}>-</button>
+                  ) : null}
                   <span>{producto.cantidad}</span>
                   <button onClick={() => aumentarCantidad(producto.id)}>+</button>
                 </div>
@@ -42,17 +44,19 @@ export const CarritoScreen = () => {
               </div>
             </div>
           ))}
-          <div className="carrito-total">
-            <h3>Total: ${calcularTotal()}</h3>
-          </div>
-          <div className="carrito-actions">
-            <button
-              onClick={realizarCompra}
-              disabled={listaCompras.length === 0}
-              className="btn-realizar-compra"
-            >
-              Realizar Compra
-            </button>
+          <div className="carrito-foot">
+            <div className="carrito-total">
+              <h3>Total: ${calcularTotal()}</h3>
+            </div>
+            <div className="carrito-actions">
+              <button
+                onClick={realizarCompra}
+                disabled={listaCompras.length === 0}
+                className="btn-realizar-compra"
+              >
+                Realizar Compra
+              </button>
+            </div>
           </div>
         </div>
       )}

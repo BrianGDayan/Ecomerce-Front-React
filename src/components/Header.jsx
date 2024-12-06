@@ -8,36 +8,40 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 import img1 from '../assets/img/logo.png';
 import img2 from '../assets/img/running-man.png'
-
 export const Header = () => {
-
-  const { isAuthenticated, logout } = useAuth(); // Acceder al estado de autenticación
-
+  const { isAuthenticated, logout, isUser } = useAuth(); // Acceder al estado de autenticación y usuario
   const { listaCompras } = useContext(CarritoContext);
 
   return (
     <>
-      <header className="container-fluid bg-primary p-2 px-5 d-flex align-items-center justify-content-space-between">
-        <a href="index.html"><img className="w-25 " src={img1} /></a>
-        <img src={img2} alt="imagen" className="header-img img-fluid" />
+      <header className="container-fluid bg-primary d-flex align-items-center justify-content-space-between">
+        <a href="index.html"><img className="w-25 " src={img1} alt="logo" /></a>
+        <div className="gap-3 d-flex align-items-center">
+          {isAuthenticated ? (
+            <p className="text-white">Welcome, {isUser?.displayName || 'User'}!</p>
+          ) : (
+            <p className="text-white">Welcome, Guest!</p>
+          )}
+          <img src={img2} alt="imagen" className="header-img img-fluid" />
+
+        </div>
       </header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light p-2">
+      <nav className="navbar navbar-expand-lg navbar-light p-2">
         <div className="container-fluid">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          
+
           <div className="collapse navbar-collapse justify-content-evenly" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink to='/' className="nav-link" >Home</NavLink>  
+                <NavLink to='/' className="nav-link">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/productos' className="nav-link" >Products</NavLink>
+                <NavLink to='/productos' className="nav-link">Products</NavLink>
               </li>
 
-              {/* Mostrar opciones solo si el usuario no está logueado */}
-              { !isAuthenticated ? (
+              {!isAuthenticated ? (
                 <>
                   <li className="nav-item">
                     <NavLink to='/login' className="nav-link">Log in</NavLink>
@@ -46,15 +50,14 @@ export const Header = () => {
                     <NavLink to='/registro' className="nav-link">Sign up</NavLink>
                   </li>
                 </>
-                ) : (
-                  <li className="nav-item">
-                    <button onClick={logout} className="nav-link">Logout</button>
-                  </li>
-                )
-                }
+              ) : (
+                <li className="nav-item">
+                  <button onClick={logout} className="nav-link">Logout</button>
+                </li>
+              )}
               <li className="nav-item">
                 <NavLink to="/carrito" className="nav-link icon cart-icon-wrapper">
-                  <BsCart4 size={24}/>
+                  <BsCart4 size={24} />
                 </NavLink>
               </li>
             </ul>
@@ -62,5 +65,5 @@ export const Header = () => {
         </div>
       </nav>
     </>
-  )
-}
+  );
+};

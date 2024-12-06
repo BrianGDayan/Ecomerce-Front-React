@@ -82,14 +82,13 @@ export const ProductosProvider = ({ children }) => {
         const data = await response.json();
         console.log("Respuesta completa del servidor:", data);
   
-        if (data.message) {
+        if (data) {
           setProductos((prevProductos) =>
             prevProductos.map((prod) => (prod.id === productoEditado.id ? productoEditado : prod))
           );
           alert("Producto actualizado");
         } else {
           console.error("La respuesta no contiene un mensaje:", data);
-          alert("Error al actualizar el producto");
         }
       } else {
         console.error("Error en la solicitud:", response);

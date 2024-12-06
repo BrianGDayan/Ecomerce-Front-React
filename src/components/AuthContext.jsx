@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [isUser, setUser] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const login = (token, tipoUsuario) => {
     alert('Usuario logeado con éxito');
     setIsAuthenticated(true);
-    localStorage.setItem('token', token); // Guardar token en localStorage
+    sessionStorage.setItem('token', token); // Guardar token en localStorage
     const payload = JSON.parse(atob(token.split('.')[1]));
     setUser({
       id: payload.id,
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setIsAuthenticated(false);
     setUser(null);
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   };
 
   return (

@@ -5,30 +5,42 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [tipo_usuario, setTipoUsuario] = useState(null);
+  const [isUser, setUser] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      setUser({
+        id: payload.id,
+        displayName: payload.nombre,
+        email: payload.correo_electronico,
+      });
     }
   }, []);
 
   const login = (token, tipoUsuario) => {
     alert('Usuario logeado con éxito');
     setIsAuthenticated(true);
-    setTipoUsuario(tipoUsuario);  // Actualizamos el tipo de usuario
+    localStorage.setItem('token', token); // Guardar token en localStorage
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    setUser({
+      id: payload.id,
+      displayName: payload.nombre,
+      email: payload.correo_electronico,
+    });
     sessionStorage.setItem('token', token);
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    setTipoUsuario(null);  // Limpiamos el tipo de usuario al hacer logout
+    setUser(null);
     localStorage.removeItem('token');
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, tipo_usuario }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, isUser }}>
       {children}
     </AuthContext.Provider>
   );

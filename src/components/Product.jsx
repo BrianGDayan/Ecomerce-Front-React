@@ -1,19 +1,25 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { CarritoContext } from '../context/CarritoContext';
 import '../styles/Product.css';
 
-export const Product = ({ product, handleAgregar, handleQuitar }) => {
-  const { agregarCompra, eliminarCompra } = useContext(CarritoContext);
-  const [added, setAdded] = useState(false)
+export const Product = ({ product }) => {
+  const { listaCompras, agregarCompra, eliminarCompra } = useContext(CarritoContext);
+  const [added, setAdded] = useState(false);
 
-  const clickAgregar = () => {
-    handleAgregar()
-    setAdded(true)
-  }
-  const clickQuitar = () => {
-      handleQuitar()
-      setAdded(false)
-  }
+  useEffect(() => {
+    const isInCart = listaCompras.some(item => item.id === product.id);
+    setAdded(isInCart);
+  }, [listaCompras, product.id]);
+
+  const handleAgregar = () => {
+    agregarCompra(product);
+    setAdded(true);
+  };
+
+  const handleQuitar = () => {
+    eliminarCompra(product.id);
+    setAdded(false);
+  };
 
   return (
     <div className="product-card">
@@ -24,18 +30,20 @@ export const Product = ({ product, handleAgregar, handleQuitar }) => {
       />
       <h3 className="product-name">{product.nombre}</h3>
       <p className="product-price">Precio: ${product.precio}</p>
-      <p className="product-stock">Stock: {product.stock}</p>
-
+      {added ? (<p className='add-more'>Agrega más en seccion carrito.</p>) : null
+      }
       {added ? (
         <button
           className="product-remove-button"
-          onClick={clickQuitar}
+          onClick={handleQuitar}
         >
           Quitar del carrito
         </button>
       ) : (
-        <button className="product-buy-button" 
-        onClick={clickAgregar}>
+        <button
+          className="product-buy-button"
+          onClick={handleAgregar}
+        >
           Añadir al carrito
         </button>
       )}

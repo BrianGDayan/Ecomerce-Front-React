@@ -1,10 +1,11 @@
 import img1 from '../assets/img/carrousel-img1.jpg';
 import img2 from '../assets/img/carrousel-img2.jpg';
 import img3 from '../assets/img/carrousel-img3.jpg';
+import '../styles/HomeScreen.css';
 
 export const HomeScreen = () => {
   return (
-    <div id="carouselExampleCaptions" className="carousel slide">
+    <div id="carouselExampleCaptions" className="carousel slide div-imgs">
       <div className="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -42,6 +43,5 @@ export const HomeScreen = () => {
         <span className="visually-hidden">Next</span>
       </button>
     </div>
-
   )
 }

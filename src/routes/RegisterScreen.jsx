@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from "react-router-dom";
+import { useNavigate, Navigate, NavLink } from "react-router-dom";
 import '../styles/Data.css';
 import img1 from '../assets/img/logo.png';
-
 // Datos para registrarse
 export const RegisterScreen = () => {
   const url = 'http://localhost:3001/auth/register'; // Cambiar a la URL correcta
-
+  const navigate = useNavigate(); // Inicializamos el hook useNavigate
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
@@ -29,26 +28,27 @@ export const RegisterScreen = () => {
     e.preventDefault();
 
     try {
-      // Enviar los datos del formulario
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
-      // Comprobar si la respuesta fue exitosa
-      if (response.ok) {
-        alert('Usuario creado con éxito');
+      if (!response.ok) {
+        const errorData = data || { error: 'Error desconocido' };
+        console.error('Error en la respuesta:', errorData);
+        alert('Error al crear el usuario: ' + (errorData.error || 'Error desconocido'));
       } else {
-        alert('Error al crear el usuario: ' + data.error);
+        alert('Usuario creado con éxito');
+        navigate('/login');
       }
+
     } catch (error) {
-      console.error('Error de red:', error);
-      alert('Hubo un error al registrar el usuario');
+      alert(error)
     }
   };
 
@@ -109,7 +109,7 @@ export const RegisterScreen = () => {
           </div>
           <div className="form-group">
             <label className="d-inline">
-              Already have an account? 
+              Already have an account?
               <NavLink to='/login' className="nav-link text-primary d-inline">Click here</NavLink>
             </label>
           </div>

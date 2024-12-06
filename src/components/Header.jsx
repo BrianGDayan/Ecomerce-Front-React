@@ -16,7 +16,7 @@ export const Header = () => {
   return (
     <>
       <header className="container-fluid bg-primary d-flex align-items-center justify-content-space-between">
-        <a href="index.html"><img className="w-25 " src={img1} alt="logo" /></a>
+        <a><img className="w-25 " src={img1} alt="logo" /></a>
         <div className="gap-3 d-flex align-items-center">
           {isAuthenticated ? (
             <p className="text-white">Welcome, {isUser?.displayName || 'User'}!</p>

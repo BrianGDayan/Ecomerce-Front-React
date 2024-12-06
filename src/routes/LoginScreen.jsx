@@ -36,6 +36,7 @@ export const LoginScreen = () => {
       const data = await response.json();
       if (response.ok) {
         login(data.token, data.tipo_usuario); // Pasamos el tipo de usuario al login
+        console.log(data.token)
         if (data.tipo_usuario === 'admin') {
           navigate('/admin');
         } else {

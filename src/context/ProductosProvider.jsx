@@ -80,7 +80,6 @@ export const ProductosProvider = ({ children }) => {
       // Verifica si la respuesta es válida y contiene un JSON
       if (response.ok) {
         const data = await response.json();
-        console.log("Respuesta completa del servidor:", data);
   
         if (data) {
           setProductos((prevProductos) =>

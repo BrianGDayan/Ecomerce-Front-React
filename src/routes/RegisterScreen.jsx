@@ -5,13 +5,14 @@ import img1 from '../assets/img/logo.png';
 
 // Datos para registrarse
 export const RegisterScreen = () => {
-  const url = 'http://localhost:3001/register'; // Cambiar a la URL correcta
+  const url = 'http://localhost:3001/auth/register'; // Cambiar a la URL correcta
 
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
     correo_electronico: '',
-    contrasena: ''
+    contrasena: '',
+    id_tipo_usuario: 2
   });
 
   // Consumir datos input

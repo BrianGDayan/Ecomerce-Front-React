@@ -4,7 +4,6 @@ import { BsCart4 } from "react-icons/bs";
 import { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
 import '../styles/Header.css';
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import img1 from '../assets/img/logo.png';
 import img2 from '../assets/img/running-man.png';

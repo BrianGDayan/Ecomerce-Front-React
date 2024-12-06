@@ -1,5 +1,4 @@
 import '../styles/Footer.css'
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 export const Footer = () => {
   return (

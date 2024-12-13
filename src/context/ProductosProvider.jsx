@@ -64,35 +64,20 @@ export const ProductosProvider = ({ children }) => {
 
   // Función para editar un producto en la base de datos
   const editarProducto = async (productoEditado) => {
-    const token = sessionStorage.getItem('token');
-  
-    if (!token) {
-      alert("No estás autenticado");
-      return;
-    }
-  
     try {
       const response = await fetch(`https://database-fk.alwaysdata.net/productos/update/${productoEditado.id}`, {
         ...obtenerHeaders('PUT'),
         body: JSON.stringify(productoEditado),
       });
-  
-      // Verifica si la respuesta es válida y contiene un JSON
-      if (response.ok) {
-        const data = await response.json();
-  
-        if (data) {
-          setProductos((prevProductos) =>
+    const data = await response.json();
+    if (data) {
+        setProductos((prevProductos) =>
             prevProductos.map((prod) => (prod.id === productoEditado.id ? productoEditado : prod))
-          );
-          alert("Producto actualizado");
+        );
+            alert("Producto actualizado");
         } else {
-          console.error("La respuesta no contiene un mensaje:", data);
+            alert("Error al actualizar el producto");
         }
-      } else {
-        console.error("Error en la solicitud:", response);
-        alert("Error al actualizar el producto");
-      }
     } catch (error) {
       console.error("Error al actualizar producto:", error);
     }

@@ -86,7 +86,7 @@ export const ProductosProvider = ({ children }) => {
   // Función para eliminar un producto de la base de datos
   const eliminarProducto = async (idProducto) => {
       try {
-          const response = await fetch(`https://database-fk.alwaysdata.net/producos/delete/${idProducto}`, {
+          const response = await fetch(`https://database-fk.alwaysdata.net/productos/delete/${idProducto}`, {
               ...obtenerHeaders('DELETE'),
           });
           const data = await response.json();
@@ -104,7 +104,7 @@ export const ProductosProvider = ({ children }) => {
   };
 
   return (
-      <ProductosContext.Provider value={{ productos, agregarProducto, editarProducto, eliminarProducto }}>
+      <ProductosContext.Provider value={{ productos, agregarProducto, editarProducto, eliminarProducto, fetchProductos }}>
           {children}
       </ProductosContext.Provider>
   );

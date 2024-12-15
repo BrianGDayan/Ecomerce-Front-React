@@ -19,9 +19,9 @@ export const Header = () => {
         <a><img className="w-25 " src={img1} alt="logo" /></a>
         <div className="gap-3 d-flex align-items-center">
           {isAuthenticated ? (
-            <p className="text-white">Welcome, {isUser?.displayName || 'User'}!</p>
+            <p className="text-white">Bienvenido, {isUser?.displayName || 'User'}!</p>
           ) : (
-            <p className="text-white">Welcome, Guest!</p>
+            <p className="text-white">Bienvenido, invitado</p>
           )}
           <img src={img2} alt="imagen" className="header-img img-fluid" />
 
@@ -41,10 +41,10 @@ export const Header = () => {
               {!isAuthenticated ? (
                 <>
                   <li className="nav-item">
-                    <NavLink to='/login' className="nav-link">Log in</NavLink>
+                    <NavLink to='/login' className="nav-link">Iniciar sesión</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to='/registro' className="nav-link">Sign up</NavLink>
+                    <NavLink to='/registro' className="nav-link">Registrarse</NavLink>
                   </li>
                 </>
               ) : (
@@ -57,10 +57,10 @@ export const Header = () => {
                   ) : (
                     <>
                       <li className="nav-item">
-                        <NavLink to='/' className="nav-link">Home</NavLink>  
+                        <NavLink to='/' className="nav-link">Inicio</NavLink>  
                       </li>
                       <li className="nav-item">
-                        <NavLink to='/productos' className="nav-link">Products</NavLink>
+                        <NavLink to='/productos' className="nav-link">Nuestros productos</NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink to="/carrito" className="nav-link icon cart-icon-wrapper">
@@ -70,7 +70,7 @@ export const Header = () => {
                     </>
                   )}
                   <li className="nav-item">
-                    <button onClick={logout} className="nav-link">Logout</button>
+                    <button onClick={logout} className="nav-link">Cerrar sesión</button>
                   </li>
                 </>
               )}

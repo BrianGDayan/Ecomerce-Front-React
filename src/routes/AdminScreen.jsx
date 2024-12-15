@@ -15,6 +15,9 @@ export const AdminScreen = () => {
     id_categoria: "",
   });
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -64,15 +67,47 @@ export const AdminScreen = () => {
     modal.hide();
   };
 
+  // Filtrar productos
+  const filteredProducts = productos.filter((product) => {
+    const matchesSearch = product.nombre?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "" || product.id_categoria === parseInt(selectedCategory);
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <div className="admin-screen">
-      <h1>Gestión de Productos</h1>
+    <h1>Gestión de Productos</h1>
+    <input
+      type="text"
+      id="product-search"
+      placeholder="Buscar producto por nombre"
+      className="input-search"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+
+    <select
+      id="category-select"
+      className="select-category"
+      value={selectedCategory}
+      onChange={(e) => setSelectedCategory(e.target.value)}
+    >
+      <option value="">Todas las categorías</option>
+      <option value="1">Ropa</option>
+      <option value="2">Calzado</option>
+      <option value="3">Accesorios</option>
+      <option value="4">Tecnología</option>
+      <option value="5">Suplementos</option>
+    </select>
+
+
       <button onClick={abrirModalAgregar} className="btn btn-primary mb-3">
         Agregar Producto
       </button>
 
       <div className="lista-productos">
-        {productos.map((producto) => (
+        {filteredProducts.map((producto) => (
           <div key={producto.id} className="producto-item">
             <img src={producto.imagen_url} alt={producto.nombre} className="producto-imagen" />
             <div className="producto-detalles">
@@ -80,7 +115,7 @@ export const AdminScreen = () => {
               <p className="producto-descripcion">{producto.descripcion}</p>
               <p>Precio: ${producto.precio}</p>
               <p>Stock: {producto.stock}</p>
-              <p>Categoría: {producto.id_categoria}</p> {/* Mostrar la categoría */}
+              <p>Categoría: {producto.id_categoria}</p>
             </div>
             <div className="producto-acciones">
               <button onClick={() => abrirModalEditar(producto)} className="btn btn-warning me-2">

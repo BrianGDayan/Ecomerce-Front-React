@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, Navigate, NavLink } from "react-router-dom";
 import '../styles/Data.css';
 import img1 from '../assets/img/logo.png';
+import imgBackground from '../assets/img/carrousel-img2.jpg';
+
 // Datos para registrarse
 export const RegisterScreen = () => {
   const url = 'https://database-fk.alwaysdata.net/auth/register';
@@ -54,67 +56,67 @@ export const RegisterScreen = () => {
 
   return (
     <div className='page d-flex flex-column align-items-center justify-content-center bg-secondary'>
-      <p className="loginSign m-0 p-2 bg-primary text-light text-center">REGISTER</p>
+      <p className="loginSign m-0 p-2 bg-primary text-light text-center">REGISTRARSE</p>
       <div className="dataSection m-0 p-2 d-flex flex-column align-items-center justify-content-center bg-light">
         <img src={img1} className="pageLogo" />
         <form className="form-group" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="nombre">First Name</label>
+            <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
               className="form-control"
               id="nombre"
-              placeholder="Enter First Name"
+              placeholder="Ingresá tu nombre"
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="apellido">Last Name</label>
+            <label htmlFor="apellido">Apellido</label>
             <input
               type="text"
               className="form-control"
               id="apellido"
-              placeholder="Enter Last Name"
+              placeholder="Ingresá tu apellido"
               name="apellido"
               value={formData.apellido}
               onChange={handleChange}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="correo_electronico">Email address</label>
+            <label htmlFor="correo_electronico">Correo electrónico</label>
             <input
               type="email"
               className="form-control"
               id="correo_electronico"
-              placeholder="Enter email"
+              placeholder="Ingresá tu correo"
               name="correo_electronico"
               value={formData.correo_electronico}
               onChange={handleChange}
             />
-            <small className="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small className="form-text text-muted">Tu correo electrónico nunca será compartido con terceros.</small>
           </div>
           <div className="form-group">
-            <label htmlFor="contrasena">Password</label>
+            <label htmlFor="contrasena">Contraseña</label>
             <input
               type="password"
               className="form-control"
               id="contrasena"
-              placeholder="Password"
+              placeholder="Ingresá tu contraseña"
               name="contrasena"
               value={formData.contrasena}
               onChange={handleChange}
             />
           </div>
           <div className="form-group">
-            <label className="d-inline">
-              Already have an account?
-              <NavLink to='/login' className="nav-link text-primary d-inline">Click here</NavLink>
-            </label>
+            <small className="d-inline">
+              ¿Ya tenés una cuenta?
+              <NavLink to='/login' className="nav-link text-primary d-inline"> Iniciá sesión</NavLink>
+            </small>
           </div>
 
-          <button type="submit" className="btn btn-primary w-100">JOIN US</button>
+          <button type="submit" className="btn btn-primary w-100">Crear cuenta</button>
         </form>
       </div>
     </div>

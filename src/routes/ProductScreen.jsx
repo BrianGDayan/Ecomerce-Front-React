@@ -1,15 +1,18 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Product } from "../components/Product";
 import { ProductosContext } from "../context/ProductosContext";
 import { CarritoContext } from "../context/CarritoContext";
 import "../styles/ProductScreen.css";
 
 export const ProductScreen = () => {
-  const { productos } = useContext(ProductosContext);
+  const { productos, fetchProductos } = useContext(ProductosContext); // Traer fetchProductos
   const { agregarCompra, eliminarCompra } = useContext(CarritoContext);
   const [searchTerm, setSearchTerm] = useState(""); // Para buscar por nombre
   const [selectedCategory, setSelectedCategory] = useState(""); // Para filtrar por categoría
+
+  useEffect(() => {
+    fetchProductos(); // Llamar a la función para obtener los productos actualizados
+  }, []); // Solo al cargar la pantalla
 
   const handleAgregar = (compra) => {
     agregarCompra(compra);

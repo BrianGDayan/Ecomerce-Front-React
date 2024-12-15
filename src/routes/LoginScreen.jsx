@@ -51,46 +51,46 @@ export const LoginScreen = () => {
 
   return (
     <div className='page d-flex flex-column align-items-center justify-content-center bg-secondary'>
-      <p className="loginSign m-0 p-2 bg-primary text-light text-center">LOG IN</p>
+      <p className="loginSign m-0 p-2 bg-primary text-light text-center">INICIAR SESIÓN</p>
       <div className="dataSection m-0 p-2 d-flex flex-column align-items-center justify-content-center bg-light">
         <img src={img1} className="pageLogo" alt="Logo" />
         <form className="form-group" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="correo_electronico">Email address</label>
+            <label htmlFor="correo_electronico">Correo electrónico</label>
             <input
               type="email"
               className="form-control"
               id="correo_electronico"
-              placeholder="Enter email"
+              placeholder="Ingresá tu correo"
               name="correo_electronico"
               value={formData.correo_electronico}
               onChange={handleChange}
             />
             <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
+            Tu correo electrónico nunca será compartido con terceros.
             </small>
           </div>
           <div className="form-group">
-            <label htmlFor="contrasena">Password</label>
+            <label htmlFor="contrasena">Contraseña</label>
             <input
               type="password"
               className="form-control"
               id="contrasena"
-              placeholder="Password"
+              placeholder="Ingresá tu contraseña"
               name="contrasena"
               value={formData.contrasena}
               onChange={handleChange}
             />
           </div>
           <div className="form-group">
-            <label className="d-inline">
-              No account?{' '}
+            <small className="d-inline">
+              ¿No tenés una cuenta aún?{' '}
               <NavLink to='/registro' className="nav-link text-primary d-inline">
-                Click here
+                Registrate ahora
               </NavLink>
-            </label>
+            </small>
           </div>
-          <button type="submit" className="btn btn-primary w-100">LOG IN</button>
+          <button type="submit" className="btn btn-primary w-100">Ingresar</button>
         </form>
       </div>
     </div>
